@@ -4,7 +4,8 @@ import {
     EditorSuggest,
     EditorSuggestContext,
     EditorSuggestTriggerInfo,
-    TFile
+    TFile,
+    setIcon
 } from "obsidian";
 import ObsidianAdmonition from "src/main";
 
@@ -19,7 +20,8 @@ abstract class AdmonitionOrCalloutSuggester extends EditorSuggest<string> {
         );
     }
     renderSuggestion(text: string, el: HTMLElement) {
-        el.createSpan({ text });
+        span = el.createSpan({ text: text, cls: "callout", attr: {'data-callout': text} });
+        setIcon(span, "var(--callout-icon)");
     }
     onTrigger(
         cursor: EditorPosition,
