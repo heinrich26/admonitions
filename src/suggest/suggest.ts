@@ -3,8 +3,7 @@ import {
     EditorPosition,
     EditorSuggest,
     EditorSuggestContext,
-    EditorSuggestTriggerInfo,
-    setIcon
+    EditorSuggestTriggerInfo
 } from "obsidian";
 import { Admonition } from "src/@types";
 import ObsidianAdmonition from "src/main";
