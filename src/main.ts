@@ -870,3 +870,5 @@ ${editor.getDoc().getSelection()}
         this.turnOffSyntaxHighlighting();
     }
 }
+
+

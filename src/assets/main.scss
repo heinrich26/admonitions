@@ -317,6 +317,22 @@
   }
 }
 
+.suggestion-container > .suggestion > .suggestion-item > .admonition-suggester-icon {
+  &:not(:empty) {
+    padding-right: var(--size-4-1);
+  }
+
+  div {
+    display: inline-block;
+    height: 1em;
+    font-size: inherit;
+    vertical-align: -0.125em;
+  }
+
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .admonition-color-settings {
   .setting-item-control {
     gap: 1rem;

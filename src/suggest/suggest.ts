@@ -4,22 +4,34 @@ import {
     EditorSuggest,
     EditorSuggestContext,
     EditorSuggestTriggerInfo,
-    TFile
+    TFile,
+    setIcon
 } from "obsidian";
+import { Admonition } from "src/@types";
 import ObsidianAdmonition from "src/main";
 
-abstract class AdmonitionOrCalloutSuggester extends EditorSuggest<string> {
+abstract class AdmonitionOrCalloutSuggester extends EditorSuggest<[string, Admonition]> {
     constructor(public plugin: ObsidianAdmonition) {
         super(plugin.app);
     }
     getSuggestions(ctx: EditorSuggestContext) {
-        if (!ctx.query?.length) return Object.keys(this.plugin.admonitions);
-        return Object.keys(this.plugin.admonitions).filter((p) =>
-            p.toLowerCase().contains(ctx.query.toLowerCase())
+        if (!ctx.query?.length) return Object.entries(this.plugin.admonitions);
+
+        return Array.from(Object.entries(this.plugin.admonitions).filter((p) =>
+            p[0].toLowerCase().contains(ctx.query.toLowerCase()))
         );
     }
-    renderSuggestion(text: string, el: HTMLElement) {
+    renderSuggestion([text, item]: [text: string, item: Admonition], el: HTMLElement) {
         el.createSpan({ text });
+        const iconDiv = createDiv("suggestion-flair admonition-suggester-icon");
+        iconDiv
+            .appendChild(
+                this.plugin.iconManager.getIconNode(item.icon) ?? createDiv()
+            )
+            .setAttribute("color", `rgb(${item.color})`);
+
+        el.prepend(iconDiv);
+        
     }
     onTrigger(
         cursor: EditorPosition,
@@ -50,7 +62,7 @@ abstract class AdmonitionOrCalloutSuggester extends EditorSuggest<string> {
     }
     abstract offset: number;
     abstract selectSuggestion(
-        value: string,
+        value: [string, Admonition],
         evt: MouseEvent | KeyboardEvent
     ): void;
     abstract testAndReturnQuery(
@@ -61,7 +73,7 @@ abstract class AdmonitionOrCalloutSuggester extends EditorSuggest<string> {
 
 export class CalloutSuggest extends AdmonitionOrCalloutSuggester {
     offset = 4;
-    selectSuggestion(value: string, evt: MouseEvent | KeyboardEvent): void {
+    selectSuggestion([text]: [text: string, item: Admonition], evt: MouseEvent | KeyboardEvent): void {
         if (!this.context) return;
 
         const line = this.context.editor
@@ -70,7 +82,7 @@ export class CalloutSuggest extends AdmonitionOrCalloutSuggester {
         const [_, exists] = line.match(/^(\] ?)/) ?? [];
 
         this.context.editor.replaceRange(
-            `${value}] `,
+            `${text}] `,
             this.context.start,
             {
                 ...this.context.end,
@@ -84,7 +96,7 @@ export class CalloutSuggest extends AdmonitionOrCalloutSuggester {
 
         this.context.editor.setCursor(
             this.context.start.line,
-            this.context.start.ch + value.length + 2
+            this.context.start.ch + text.length + 2
         );
 
         this.close();
@@ -100,11 +112,11 @@ export class CalloutSuggest extends AdmonitionOrCalloutSuggester {
 }
 export class AdmonitionSuggest extends AdmonitionOrCalloutSuggester {
     offset = 6;
-    selectSuggestion(value: string, evt: MouseEvent | KeyboardEvent): void {
+    selectSuggestion([text]: [text: string, item: Admonition], evt: MouseEvent | KeyboardEvent): void {
         if (!this.context) return;
 
         this.context.editor.replaceRange(
-            `${value}`,
+            `${text}`,
             this.context.start,
             this.context.end,
             "admonitions"
