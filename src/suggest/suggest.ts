@@ -4,7 +4,6 @@ import {
     EditorSuggest,
     EditorSuggestContext,
     EditorSuggestTriggerInfo,
-    TFile,
     setIcon
 } from "obsidian";
 import { Admonition } from "src/@types";
