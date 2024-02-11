@@ -20,12 +20,12 @@ abstract class AdmonitionOrCalloutSuggester extends EditorSuggest<[string, Admon
         );
     }
     renderSuggestion([text, item]: [text: string, item: Admonition], el: HTMLElement) {
-        el.createSpan({ text });
+        el.createSpan({ text }).style.color = `rgb(${item.color})`
         const iconDiv = createDiv("suggestion-flair admonition-suggester-icon");
+        let iconEl = this.plugin.iconManager.getIconNode(item.icon);
+        if (iconEl instanceof HTMLDivElement && iconEl.childElementCount == 1) iconEl = iconEl.firstElementChild
         iconDiv
-            .appendChild(
-                this.plugin.iconManager.getIconNode(item.icon) ?? createDiv()
-            )
+            .appendChild(iconEl ?? createDiv())
             .setAttribute("color", `rgb(${item.color})`);
 
         el.prepend(iconDiv);
