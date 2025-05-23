@@ -15,280 +15,270 @@ export const SPIN_ICON_NAME = "admonition-spin";
 export const ADMONITION_MAP: Record<string, Admonition> = {
     note: {
         type: "note",
-        color: "68, 138, 255",
+        color: "var(--callout-default)",
         icon: {
-            type: "font-awesome",
-            name: "pencil-alt"
-        },
-        command: false,
-        noTitle: false
-    },
-    seealso: {
-        type: "note",
-        color: "68, 138, 255",
-        icon: {
-            type: "font-awesome",
-            name: "pencil-alt"
+            type: "obsidian",
+            name: "lucide-pencil"
         },
         command: false,
         noTitle: false
     },
     abstract: {
         type: "abstract",
-        color: "0, 176, 255",
+        color: "var(--callout-summary)",
         icon: {
-            type: "font-awesome",
-            name: "book"
+            type: "obsidian",
+            name: "lucide-clipboard-list"
         },
         command: false,
         noTitle: false
     },
     summary: {
         type: "abstract",
-        color: "0, 176, 255",
+        color: "var(--callout-summary)",
         icon: {
-            type: "font-awesome",
-            name: "book"
+            type: "obsidian",
+            name: "lucide-clipboard-list"
         },
         command: false,
         noTitle: false
     },
     tldr: {
         type: "abstract",
-        color: "0, 176, 255",
+        color: "var(--callout-summary)",
         icon: {
-            type: "font-awesome",
-            name: "book"
+            type: "obsidian",
+            name: "lucide-clipboard-list"
         },
         command: false,
         noTitle: false
     },
     info: {
         type: "info",
-        color: "0, 184, 212",
+        color: "var(--callout-info)",
         icon: {
-            type: "font-awesome",
-            name: "info-circle"
+            type: "obsidian",
+            name: "lucide-info"
         },
         command: false,
         noTitle: false
     },
     todo: {
         type: "info",
-        color: "0, 184, 212",
+        color: "var(--callout-todo)",
         icon: {
-            type: "font-awesome",
-            name: "info-circle"
+            type: "obsidian",
+            name: "lucide-check-circle-2"
         },
         command: false,
         noTitle: false
     },
     tip: {
         type: "tip",
-        color: "0, 191, 165",
+        color: "var(--callout-tip)",
         icon: {
-            type: "font-awesome",
-            name: "fire"
+            type: "obsidian",
+            name: "lucide-flame"
         },
         command: false,
         noTitle: false
     },
     hint: {
         type: "tip",
-        color: "0, 191, 165",
+        color: "var(--callout-tip)",
         icon: {
-            type: "font-awesome",
-            name: "fire"
+            type: "obsidian",
+            name: "lucide-flame"
         },
         command: false,
         noTitle: false
     },
     important: {
         type: "tip",
-        color: "0, 191, 165",
+        color: "var(--callout-important)",
         icon: {
-            type: "font-awesome",
-            name: "fire"
+            type: "obsidian",
+            name: "lucide-flame"
         },
         command: false,
         noTitle: false
     },
     success: {
         type: "success",
-        color: "0, 200, 83",
+        color: "var(--callout-success)",
         icon: {
-            type: "font-awesome",
-            name: "check-circle"
+            type: "obsidian",
+            name: "lucide-check"
         },
         command: false,
         noTitle: false
     },
     check: {
         type: "success",
-        color: "0, 200, 83",
+        color: "var(--callout-success)",
         icon: {
-            type: "font-awesome",
-            name: "check-circle"
+            type: "obsidian",
+            name: "lucide-check"
         },
         command: false,
         noTitle: false
     },
     done: {
         type: "success",
-        color: "0, 200, 83",
+        color: "var(--callout-success)",
         icon: {
-            type: "font-awesome",
-            name: "check-circle"
+            type: "obsidian",
+            name: "lucide-check"
         },
         command: false,
         noTitle: false
     },
     question: {
         type: "question",
-        color: "100, 221, 23",
+        color: "var(--callout-question)",
         icon: {
-            type: "font-awesome",
-            name: "question-circle"
+            type: "obsidian",
+            name: "help-circle"
         },
         command: false,
         noTitle: false
     },
     help: {
         type: "question",
-        color: "100, 221, 23",
+        color: "var(--callout-question)",
         icon: {
-            type: "font-awesome",
-            name: "question-circle"
+            type: "obsidian",
+            name: "help-circle"
         },
         command: false,
         noTitle: false
     },
     faq: {
         type: "question",
-        color: "100, 221, 23",
+        color: "var(--callout-question)",
         icon: {
-            type: "font-awesome",
-            name: "question-circle"
+            type: "obsidian",
+            name: "help-circle"
         },
         command: false,
         noTitle: false
     },
     warning: {
         type: "warning",
-        color: "255, 145, 0",
+        color: "var(--callout-warning)",
         icon: {
-            type: "font-awesome",
-            name: "exclamation-triangle"
+            type: "obsidian",
+            name: "lucide-alert-triangle"
         },
         command: false,
         noTitle: false
     },
     caution: {
         type: "warning",
-        color: "255, 145, 0",
+        color: "var(--callout-warning)",
         icon: {
-            type: "font-awesome",
-            name: "exclamation-triangle"
+            type: "obsidian",
+            name: "lucide-alert-triangle"
         },
         command: false,
         noTitle: false
     },
     attention: {
         type: "warning",
-        color: "255, 145, 0",
+        color: "var(--callout-warning)",
         icon: {
-            type: "font-awesome",
-            name: "exclamation-triangle"
+            type: "obsidian",
+            name: "lucide-alert-triangle"
         },
         command: false,
         noTitle: false
     },
     failure: {
         type: "failure",
-        color: "255, 82, 82",
+        color: "var(--callout-fail)",
         icon: {
-            type: "font-awesome",
-            name: "times-circle"
+            type: "obsidian",
+            name: "lucide-x"
         },
         command: false,
         noTitle: false
     },
     fail: {
         type: "failure",
-        color: "255, 82, 82",
+        color: "var(--callout-fail)",
         icon: {
-            type: "font-awesome",
-            name: "times-circle"
+            type: "obsidian",
+            name: "lucide-x"
         },
         command: false,
         noTitle: false
     },
     missing: {
         type: "failure",
-        color: "255, 82, 82",
+        color: "var(--callout-fail)",
         icon: {
-            type: "font-awesome",
-            name: "times-circle"
+            type: "obsidian",
+            name: "lucide-x"
         },
         command: false,
         noTitle: false
     },
     danger: {
         type: "danger",
-        color: "255, 23, 68",
+        color: "var(--callout-error)",
         icon: {
-            type: "font-awesome",
-            name: "bolt"
+            type: "obsidian",
+            name: "lucide-zap"
         },
         command: false,
         noTitle: false
     },
     error: {
         type: "danger",
-        color: "255, 23, 68",
+        color: "var(--callout-error)",
         icon: {
-            type: "font-awesome",
-            name: "bolt"
+            type: "obsidian",
+            name: "lucide-zap"
         },
         command: false,
         noTitle: false
     },
     bug: {
         type: "bug",
-        color: "245, 0, 87",
+        color: "var(--callout-bug)",
         icon: {
-            type: "font-awesome",
-            name: "bug"
+            type: "obsidian",
+            name: "lucide-bug"
         },
         command: false,
         noTitle: false
     },
     example: {
         type: "example",
-        color: "124, 77, 255",
+        color: "var(--callout-example)",
         icon: {
-            type: "font-awesome",
-            name: "list-ol"
+            type: "obsidian",
+            name: "lucide-list"
         },
         command: false,
         noTitle: false
     },
     quote: {
         type: "quote",
-        color: "158, 158, 158",
+        color: "var(--callout-quote)",
         icon: {
-            type: "font-awesome",
-            name: "quote-right"
+            type: "obsidian",
+            name: "quote-glyph"
         },
         command: false,
         noTitle: false
     },
     cite: {
         type: "quote",
-        color: "158, 158, 158",
+        color: "var(--callout-quote)",
         icon: {
-            type: "font-awesome",
-            name: "quote-right"
+            type: "obsidian",
+            name: "quote-glyph"
         },
         command: false,
         noTitle: false
